@@ -5,7 +5,9 @@ angular.module('testmeApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'btford.socket-io'
+  'btford.socket-io',
+  'ui.slider',
+  'ngTagsInput'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -46,6 +48,8 @@ angular.module('testmeApp', [
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
+      console.log('routeChangeStart: ', event, next);
+      
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');

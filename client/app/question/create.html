@@ -1,0 +1,141 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>创建题目</h1>
+      
+      <form class="form" name="form" ng-submit="addQuestion()" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.type.$valid && submitted,
+                                            'has-error': form.type.$invalid && submitted }">
+          <label>题型</label>
+
+          <select required class="form-control" name="type" ng-model="question.type" ng-model="myColor" ng-options="t for t in quetionTypes">
+                <option value="">选择类型</option>
+              </select>
+          <p class="help-block" ng-show="form.type.$error.required && submitted">
+            A type is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.description.$valid && submitted, 'has-error': form.description.$invalid && submitted }">
+          <label>问题</label>
+
+          <textarea name="description" class="form-control" ng-model="question.description" required mongoose-error cols="30" rows="3"></textarea>
+          <p class="help-block" ng-show="form.description.$error.description && submitted">
+            Doesn't look like a valid description.
+          </p>
+          <p class="help-block" ng-show="form.description.$error.required && submitted">
+            What's your description?
+          </p>
+          <p class="help-block" ng-show="form.description.$error.mongoose">
+            {{ errors.description }}
+          </p>
+        </div>
+  
+        <div class="form-group" ng-class="{ 'has-success': form.images.$valid && submitted, 'has-error': form.images.$invalid && submitted }">
+          <label>图片</label>
+          <input type="hidden" class="form-control" ng-model="question.images" ng-list mongoose-error/>
+          <input multiple="true" id="images" type="file" style="width: 100%;" class="alert alert-info large"/>
+          <p class="help-block" ng-show="form.images.$error.images && submitted">
+            Doesn't look like a valid images.
+          </p>
+          <p class="help-block" ng-show="form.images.$error.required && submitted">
+            What's your images?
+          </p>
+          <p class="help-block" ng-show="form.images.$error.mongoose">
+            {{ errors.images }}
+          </p>
+        </div>
+  
+        <div class="form-group" ng-class="{ 'has-success': form.choices.$valid && submitted, 'has-error': form.choices.$invalid && submitted }">
+          <label>选项</label>
+          <ul>
+              <li ng-repeat="choice in question.choices track by $index">
+                <div class="input-group">
+                  <span class="input-group-addon">ID</span>
+                  <input placeholder="A,B,C,D" type="text" size="2" class="form-control" ng-model="choice.identifier" required mongoose-error/>
+                  <span class="input-group-addon">Choice</span>
+                  <input placeholder="Choice description" type="text" class="form-control" ng-model="choice.choice" required mongoose-error/>
+                  <span class="input-group-btn">
+                    <a class="btn btn-default" href ng-click="question.choices.splice($index, 1)">&times;</a>
+                  </span>
+                </div>
+                
+                <p class="help-block" ng-show="form.choices.$error.choices && submitted">
+                  Doesn't look like a valid choices.
+                </p>
+                <p class="help-block" ng-show="form.choices.$error.required && submitted">
+                  What's your choices?
+                </p>
+                <p class="help-block" ng-show="form.choices.$error.mongoose">
+                  {{ errors.choices }}
+                </p>
+              </li>
+              <li>
+                <a class="btn btn-default" href ng-click="question.choices.push({})">add</a>
+              </li>
+            </ul>
+        </div>
+  
+        <div class="form-group" ng-class="{ 'has-success': form.answers.$valid && submitted, 'has-error': form.answers.$invalid && submitted }">
+          <label>参考答案</label>
+          <input placeholder="分号分隔的答案列表" type="text" class="form-control" ng-model="question.answers" ng-list mongoose-error/>
+          
+          <p class="help-block" ng-show="form.answers.$error.answers && submitted">
+            Doesn't look like a valid answers.
+          </p>
+          <p class="help-block" ng-show="form.answers.$error.required && submitted">
+            What's your answers?
+          </p>
+          <p class="help-block" ng-show="form.answers.$error.mongoose">
+            {{ errors.answers }}
+          </p>
+        </div>
+  
+        <div class="form-group" ng-class="{ 'has-success': form.coef.$valid && submitted, 'has-error': form.coef.$invalid && submitted }">
+          <label>难度系数</label>
+
+          <slider floor="0" ceiling="1" step="0.01" precision="2" ng-model="question.coef"  mongoose-error></slider>
+          <p class="help-block" ng-show="form.coef.$error.coef && submitted">
+            Doesn't look like a valid coef.
+          </p>
+          <p class="help-block" ng-show="form.coef.$error.required && submitted">
+            What's your coef?
+          </p>
+          <p class="help-block" ng-show="form.coef.$error.mongoose">
+            {{ errors.coef }}
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.tags.$valid && submitted, 'has-error': form.tags.$invalid && submitted }">
+          <label>标签</label>
+
+          <tags-input placeholder="增加标签" ng-model="question.tags" mongoose-error></tags-input>
+          <p class="help-block">
+            请按分号创建一个标签，退格键可以删除标签。
+          </p>
+          <p class="help-block" ng-show="form.tags.$error.mongoose">
+            {{ errors.tags }}
+          </p>
+        </div>
+
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            提交
+          </button>
+          <a class="btn btn-default btn-lg btn-register" href="/question">
+            返回
+          </a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      
+    </div>      
+  </div>
+
+</div>
+
+<div ng-include="'components/footer.html'"></div>

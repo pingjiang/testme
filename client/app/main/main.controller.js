@@ -8,6 +8,10 @@ angular.module('testmeApp')
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
+    
+    $http.get('/api/questions').success(function(questions) {
+      $scope.questions = questions;
+    });
 
     $scope.addThing = function() {
       if($scope.newThing === '') {

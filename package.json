@@ -1,6 +1,7 @@
 {
   "name": "testme",
-  "version": "0.0.0",
+  "description": "提供题库的创建和管理，试卷的设计和管理，考试的安排和管理，灵活的评分系统，全面的分析系统以及及时的反馈系统，为用户量身打造适合自己的测试平台。",
+  "version": "0.1.0",
   "main": "server/app.js",
   "dependencies": {
     "express": "~4.0.0",

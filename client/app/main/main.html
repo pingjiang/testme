@@ -15,6 +15,25 @@
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
         <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
       </ul>
+      
+      <h1>Questions</h1>
+      <div class="q" ng-repeat="q in questions">
+        <div class="q-desc">{{ q.description }}</div>
+        <div class="row q-images">
+          <div class="col-xs-6 col-md-3 q-image" ng-repeat="img in q.images">
+            <a href="#" class="thumbnail">
+               <img data-src="{{ img }}" alt="question image">
+             </a>
+          </div>
+        </div>
+        <ol class="q-choices">
+          <li ng-repeat="c in q.choices" class="q-choice" id="q-c-{{ c.identifier }}">{{ c.choice }}</li>
+        </ol>
+        Answers: 
+        <ul class="q-answers">
+          <li ng-repeat="a in q.answers" class="q-answer">{{ a }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -29,10 +48,5 @@
   </form>
 </div>
 
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
-</footer>
+
+<div ng-include="'components/footer.html'"></div>

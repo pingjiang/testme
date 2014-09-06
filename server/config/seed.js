@@ -5,8 +5,49 @@
 
 'use strict';
 
+var Question = require('../api/question/question.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+
+Question.find({}).remove(function() {
+  Question.create({
+    description: '1 、机动车仪表板上（如图所示）亮表示什么？',
+    images: ['/word/media/image1.jpeg'],
+    choices: [{
+      identifier: 'A',
+      choice: '驻车制动解除'
+    }, {
+      identifier: 'A',
+      choice: '制动踏板没回位'}, 
+    {
+      identifier: 'A',
+      choice: '行车制动器失效'}, 
+    {
+      identifier: 'A',
+      choice: '制动系统出现异常'
+    }],
+    answers: ['D'],
+    tags: ['Driver', '2014'],
+    active: false
+  }, {
+    description: '3 、下列哪种违法行为的机动车驾驶人将被一次记 12 分？',
+    choices: [{
+      identifier: 'A',
+      choice: '驾驶故意污损号牌的机动车上道路行驶'
+    }, {
+      identifier: 'A',
+      choice: '机动车驾驶证被暂扣期间驾驶机动车的'}, 
+    {
+      identifier: 'A',
+      choice: '以隐瞒、欺骗手段补领机动车驾驶证的'}, 
+    {
+      identifier: 'A',
+      choice: '驾驶机动车不按照规定避让校车的'
+    }],
+    answers: ['A'],
+    tags: ['Driver', '2014']
+  });
+});
 
 Thing.find({}).remove(function() {
   Thing.create({
