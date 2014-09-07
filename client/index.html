@@ -13,6 +13,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap-fileinput/css/fileinput.min.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -41,6 +43,7 @@
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/jquery-ui/ui/widget.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -49,8 +52,20 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-slider/slider.js"></script>
-      <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+      <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
       <script src="bower_components/bootstrap-fileinput/js/fileinput.min.js"></script>
+      
+      <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+      <script src="/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+      <!-- The basic File Upload plugin -->
+      <script src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+      <!-- The File Upload processing plugin -->
+      <script src="/bower_components/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+      <!-- The File Upload validation plugin -->
+      <script src="/bower_components/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
+      <!-- The File Upload Angular JS module -->
+      <script src="/bower_components/blueimp-file-upload/js/jquery.fileupload-angular.js"></script>
+      
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -66,6 +81,8 @@
           <script src="app/admin/admin.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/media/media.controller.js"></script>
+          <script src="app/media/media.js"></script>
           <script src="app/question/question.controller.js"></script>
           <script src="app/question/question.js"></script>
           <script src="components/auth/auth.service.js"></script>

@@ -8,6 +8,9 @@ angular.module('testmeApp')
     }, {
       'title': 'Questions',
       'link': '/questions'
+    }, {
+      'title': 'Medias',
+      'link': '/medias'
     }];
 
     $scope.isCollapsed = true;

@@ -23,3 +23,6 @@ or
 * 全面的分析系统。 Analyze
 * 及时的反馈系统。 Feedback
 
+## 多媒体文件管理
+
+* /api/medias/ GET/POST/PUT/DELETE

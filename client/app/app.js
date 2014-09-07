@@ -7,7 +7,8 @@ angular.module('testmeApp', [
   'ngRoute',
   'btford.socket-io',
   'ui.slider',
-  'ngTagsInput'
+  'ngTagsInput',
+  'blueimp.fileupload'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
